@@ -22,7 +22,9 @@
         <v-list-item
           v-for="item in items"
           :key="item.title"
-          link
+          router
+          exact
+          :to="item.to"
         >
           <v-list-item-icon>
             <v-icon>{{ item.icon }}</v-icon>
@@ -71,28 +73,23 @@ export default {
         },
         {
           icon: 'mdi-apps',
-          title: 'pages',
-          to: '/pages'
-        },
-        {
-          icon: 'mdi-apps',
-          title: 'User control',
-          to: '/pages'
+          title: 'User settings',
+          to: '/userSettings'
         },
         {
           icon: 'mdi-apps',
           title: 'Selling info',
-          to: '/pages'
+          to: '/sellingInfo'
         },
         {
           icon: 'mdi-apps',
           title: 'Products',
-          to: '/pages'
+          to: '/products'
         },
         {
           icon: 'mdi-apps',
           title: 'google analytics',
-          to: '/pages'
+          to: '/googleAnalytics'
         },
       ],
     }
