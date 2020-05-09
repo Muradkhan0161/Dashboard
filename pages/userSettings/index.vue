@@ -4,9 +4,10 @@
     :items="desserts"
     sort-by="email"
     class="elevation-1"
+    :search="search"
   >
     <template v-slot:top>
-      <v-toolbar flat color="white">
+      <v-toolbar flat >
         <v-toolbar-title>User</v-toolbar-title>
         <v-divider
           class="mx-4"
@@ -14,6 +15,14 @@
           vertical
         ></v-divider>
         <v-spacer></v-spacer>
+      <v-text-field
+        v-model="search"
+        append-icon="mdi-magnify"
+        label="Search"
+        single-line
+        hide-details
+      ></v-text-field>
+      <v-spacer />
         <v-dialog v-model="dialog" max-width="500px">
           <template v-slot:activator="{ on }">
             <v-btn color="primary" dark class="mb-2" v-on="on">Add new user</v-btn>
@@ -34,9 +43,6 @@
                   </v-col>
                   <v-col cols="12" sm="6" md="4">
                     <v-text-field v-model="editedItem.password" label="Password"></v-text-field>
-                  </v-col>
-                  <v-col cols="12" sm="6" md="4">
-                    <v-text-field v-model="editedItem.carbs" label="Carbs (g)"></v-text-field>
                   </v-col>
                 </v-row>
               </v-container>
@@ -75,6 +81,7 @@
 <script>
   export default {
     data: () => ({
+      search: '',
       dialog: false,
       headers: [
         {
@@ -84,8 +91,8 @@
           value: 'name',
         },
         { text: 'Email', value: 'email' },
-        { text: 'Password', value: 'password' },
-        { text: 'Carbs (g)', value: 'carbs' },
+        { text: 'Password', value: 'password', sortable: false },
+        { text: 'Total sells', value: 'total' },
         { text: 'Actions', value: 'actions', sortable: false },
       ],
       desserts: [],
@@ -93,22 +100,19 @@
       editedItem: {
         name: '',
         email: '.com',
-        password:'',
-        carbs: 0,
-      
+        password:'',      
       },
       defaultItem: {
         name: '',
         email: '.com',
         password:'',
-        carbs: 0,
-
+        total: 0,
       },
     }),
 
     computed: {
       formTitle () {
-        return this.editedIndex === -1 ? 'New User' : 'Edit Item'
+        return this.editedIndex === -1 ? 'New User' : 'Edit user'
       },
     },
 
@@ -126,73 +130,73 @@
       initialize () {
         this.desserts = [
           {
-            name: 'Frozen Yogurt',
-            email: 159,
+            name: 'Murad',
+            email: 'muradkhan0161@gmail.com',
             password: 6.0,
-            carbs: 24,
+            total: 24,
         
           },
           {
-            name: 'Ice cream sandwich',
-            email: 237,
+            name: 'Murad',
+            email: 'muradkhan0161@gmail.com',
             password: 9.0,
-            carbs: 37,
+            total: 37,
             
           },
           {
-            name: 'Eclair',
-            email: 262,
+            name: 'Murad',
+            email: 'muradkhan0161@gmail.com',
             password: 16.0,
-            carbs: 23,
+            total: 23,
            
           },
           {
-            name: 'Cupcake',
-            email: 305,
+            name: 'Murad',
+            email: 'muradkhan0161@gmail.com',
             password: 3.7,
-            carbs: 67,
+            total: 67,
             
           },
           {
-            name: 'Gingerbread',
-            email: 356,
+            name: 'Murad',
+            email: 'muradkhan0161@gmail.com',
             password: 16.0,
-            carbs: 49,
+            total: 49,
            
           },
           {
-            name: 'Jelly bean',
-            email: 375,
+            name: 'Murad',
+            email: 'muradkhan0161@gmail.com',
             password: 0.0,
-            carbs: 94,
+            total: 94,
            
           },
           {
-            name: 'Lollipop',
-            email: 392,
+            name: 'Murad',
+            email: 'muradkhan0161@gmail.com',
             password: 0.2,
-            carbs: 98,
+            total: 98,
            
           },
           {
-            name: 'Honeycomb',
-            email: 408,
+            name: 'Murad',
+            email: 'muradkhan0161@gmail.com',
             password: 3.2,
-            carbs: 87,
+            total: 87,
           
           },
           {
-            name: 'Donut',
-            email: 452,
+            name: 'Murad',
+            email: 'muradkhan0161@gmail.com',
             password: 25.0,
-            carbs: 51,
+            total: 51,
         
           },
           {
-            name: 'KitKat',
-            email: 518,
+            name: 'Murad',
+            email: 'muradkhan0161@gmail.com',
             password: 26.0,
-            carbs: 65,
+            total: 65,
          
           },
         ]
